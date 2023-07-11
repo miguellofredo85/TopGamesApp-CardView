@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,6 +41,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     CardViewModel model = listData.get(position);
     holder.gameTxt.setText(model.getTextView());
     holder.gameImg.setImageResource(model.getImageView());
+
+    //handle click event on itemView
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(context, "Image from movie " + listData.get(position).getTextView(), Toast.LENGTH_LONG).show();
+        }
+    });
     }
 
     @Override
